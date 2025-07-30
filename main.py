@@ -1,15 +1,49 @@
 from typeguard import value
+def calcular_MCD(num_1, num_2): #funcion recursiva para calcular el mcd de dos numeros por algoritmo de euclides
+    res = num_1%num_2
 
-fin_menu = True
+    if res==0:
+        return 0
+    else:
+        return calc_numeros(num1, num2)
 
-def calc_numeros(n):
+
+def cadena_rep(palabra, cantidad): #Funcion para repetir una palabra varias veces
+    if cantidad==0:
+        return
+    else:
+        print(palabra)
+        return  cadena_rep(palabra, cantidad)
+
+
+
+def contar_cadena(palabra, letra): #funcion para contar cuantas veces se repite una letra en una palabra
+    palabra_nueva = palabra.lower()
+    letra_nueva = letra.lower()
+    if palabra_nueva == "":
+        return
+    elif palabra_nueva[0] ==letra_nueva:
+        existencia =+1
+        print(existencia)
+        return contar_cadena(palabra[1:], letra)
+
+def convertir_decimalB(numero): #funcion para convertir decimal a binario
+    if numero==0:
+        return
+    else:
+        residuo =
+
+
+
+def calc_numeros(n): #funcion recursiva para calcular numeros
     cantidad = len(str(n)) #hace la conversion de datos para saber cuantos datos hay
     if n==0:
         return 0
     else:
-        return cantidad[1:]
+        return cantidad + calc_numeros(cantidad[1:])
 
 
+fin_menu = True
 
 while fin_menu:
     try:
@@ -19,8 +53,14 @@ while fin_menu:
         opcion = int(input('Seleccione una opcion: '))
         match opcion:
             #case 1:
-            #case 2:
-            #case 3:
+            case 2:
+                texto = input('Ingrese la palabra que desea repetir: ')
+                cantidad = int(input('Ingrese la cantidad de veces que desea repetir la palabra'))
+                print(cadena_rep(texto, cantidad))
+            case 3:
+                cadena = input('Ingres el texto: ')
+                letra = input('Que letra desea saber cuantas veces se repite')
+                contar_cadena(cadena, letra)
             #case 4:
             case 5:
                 digitos = int(input('Ingrese el numero del que desea saber cuantos digitos tiene'))
