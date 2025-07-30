@@ -1,12 +1,11 @@
 from typeguard import value
 def calcular_MCD(a, b): #funcion recursiva para calcular el mcd de dos numeros por algoritmo de euclides
-    res = a % b
-    res_a = a//b
-    res_b = (a*b)//b
-    if res==0:
-        return 0
+
+    if b==0:
+        return a
     else:
-        return calc_numeros(res_a , res_b)
+        return calcular_MCD(b , a%b)
+
 
 
 def cadena_rep(palabra, cantidad): #Funcion para repetir una palabra varias veces
@@ -33,6 +32,8 @@ def contar_cadena(palabra, letra): #funcion para contar cuantas veces se repite 
 def convertir_decimalB(numero): #funcion para convertir decimal a binario
     if numero==0:
         return
+    else:
+        convertir_decimalB(numero%2)
 
 
 def calc_numeros(n): #funcion recursiva para calcular numeros
@@ -58,7 +59,8 @@ while fin_menu:
             case 2: #check
                 texto = input('Ingrese la palabra que desea repetir: ')
                 cantidad = int(input('Ingrese la cantidad de veces que desea repetir la palabra: '))
-                print(f'Numero de repeticiones letra {} : {cadena_rep(texto, cantidad)}')
+                print(f'Numero de repeticiones  {cantidad} : {cadena_rep(texto, cantidad)}')
+
             case 3: #check
                 cadena = input('Ingres el texto: ')
                 letra = input('Que letra desea saber cuantas veces se repite: ')
