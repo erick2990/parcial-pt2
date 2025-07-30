@@ -20,13 +20,12 @@ def contar_cadena(palabra, letra): #funcion para contar cuantas veces se repite 
     palabra_nueva = palabra.lower()
     letra_nueva = letra.lower()
 
-    if palabra == " ":
+    if palabra == "":
         return 0
+    elif letra_nueva == palabra_nueva[0]:
+        return 1 + contar_cadena(palabra[1:], letra)
     else:
-        if letra_nueva == palabra_nueva[0]:
-             return 1 + contar_cadena(palabra[1:], letra)
-        else:
-            return contar_cadena(palabra[1:] ,  letra)
+        return contar_cadena(palabra[1:], letra)
 
 
 
@@ -35,15 +34,12 @@ def convertir_decimalB(numero): #funcion para convertir decimal a binario
         return
 
 
-
 def calc_numeros(n): #funcion recursiva para calcular numeros
-    cantidad = len(str(n)) #hace la conversion de datos para saber cuantos datos hay
-    if n==0:
-        return 0
+    cantidad = len(str(n))
+    if cantidad == 1:
+        return cantidad
     else:
-        return cantidad + calc_numeros(cantidad[1:])
-
-
+        return cantidad - calc_numeros(cantidad) +1
 
 fin_menu = True
 
@@ -55,19 +51,19 @@ while fin_menu:
         opcion = int(input('Seleccione una opcion: '))
         match opcion:
             #case 1:
-            case 2:
+            case 2: #check
                 texto = input('Ingrese la palabra que desea repetir: ')
                 cantidad = int(input('Ingrese la cantidad de veces que desea repetir la palabra'))
                 print(cadena_rep(texto, cantidad))
-            case 3:
+            case 3: #check
                 cadena = input('Ingres el texto: ')
                 letra = input('Que letra desea saber cuantas veces se repite')
                 print(contar_cadena(cadena, letra))
             case 4:
                 decimal = input('Ingrese el numero en decial que desea convertir a binario: ')
                 convertir_decimalB(decimal)
-            case 5:
-                digitos = int(input('Ingrese el numero del que desea saber cuantos digitos tiene'))
+            case 5: #check
+                digitos = int(input('Ingrese el numero del que desea saber cuantos digitos tiene: '))
                 print(calc_numeros(digitos))
             case 6:
                 print('Gracias por usar el sistema')
