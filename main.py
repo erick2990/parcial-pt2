@@ -1,11 +1,12 @@
 from typeguard import value
-def calcular_MCD(num_1, num_2): #funcion recursiva para calcular el mcd de dos numeros por algoritmo de euclides
-    res = num_1%num_2
-
+def calcular_MCD(a, b): #funcion recursiva para calcular el mcd de dos numeros por algoritmo de euclides
+    res = a % b
+    res_a = a//b
+    res_b = (a*b)//b
     if res==0:
         return 0
     else:
-        return calc_numeros(1,3)
+        return calc_numeros(res_a , res_b)
 
 
 def cadena_rep(palabra, cantidad): #Funcion para repetir una palabra varias veces
@@ -16,7 +17,7 @@ def cadena_rep(palabra, cantidad): #Funcion para repetir una palabra varias vece
         return  cadena_rep(palabra, cantidad)
 
 
-def contar_cadena(palabra, letra): #funcion para contar cuantas veces se repite una letra en una palabra
+def contar_cadena(palabra, letra): #funcion para contar cuantas veces se repite una letra en una palabra retorna el valor del mcd
     palabra_nueva = palabra.lower()
     letra_nueva = letra.lower()
 
@@ -50,21 +51,25 @@ while fin_menu:
         print('4.Convertir numero decimal a binario \r\n5.Calcular cuantos digitos tiene un numero \r\n6.Salir')
         opcion = int(input('Seleccione una opcion: '))
         match opcion:
-            #case 1:
+            case 1:
+                primero = int(input('Ingres el primer numero: '))
+                segundo = int(input('Ingrese el segundo numero: '))
+                print(f'Valor de MCD: {calcular_MCD(primero, segundo)}')
             case 2: #check
                 texto = input('Ingrese la palabra que desea repetir: ')
-                cantidad = int(input('Ingrese la cantidad de veces que desea repetir la palabra'))
-                print(cadena_rep(texto, cantidad))
+                cantidad = int(input('Ingrese la cantidad de veces que desea repetir la palabra: '))
+                print(f'Numero de repeticiones letra {} : {cadena_rep(texto, cantidad)}')
             case 3: #check
                 cadena = input('Ingres el texto: ')
-                letra = input('Que letra desea saber cuantas veces se repite')
-                print(contar_cadena(cadena, letra))
+                letra = input('Que letra desea saber cuantas veces se repite: ')
+                print(f'Numero de repeticiones letra {letra} : {contar_cadena(cadena, letra)}')
+
             case 4:
                 decimal = input('Ingrese el numero en decial que desea convertir a binario: ')
                 convertir_decimalB(decimal)
             case 5: #check
                 digitos = int(input('Ingrese el numero del que desea saber cuantos digitos tiene: '))
-                print(calc_numeros(digitos))
+                print(f'El numero {digitos} tiene: {calc_numeros(digitos)} numeros')
             case 6:
                 print('Gracias por usar el sistema')
                 fin_menu = False
