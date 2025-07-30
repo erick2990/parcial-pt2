@@ -4,7 +4,7 @@ def calcular_MCD(a, b): #funcion recursiva para calcular el mcd de dos numeros p
     if b==0:
         return a
     else:
-        return calcular_MCD(b , a%b)
+        return calcular_MCD(b , a%b) #funcion recursiva correcta en la version anterior era problema de esto
 
 
 
